@@ -1,3 +1,6 @@
+
+// Using deque
+/*
 class Solution {
 public:
     string reverseParentheses(string s) {
@@ -17,5 +20,30 @@ public:
         }
 
         return string(res.begin(), res.end());
+    }
+};
+*/
+
+//Using stack
+
+class Solution {
+public:
+    string reverseParentheses(string s) {
+        stack<int> st;
+        int i = 0;
+        while (i < s.size()) {
+            if (s[i] == '(') st.push(i);
+            else if (s[i] == ')') {
+                int si = st.top();
+                reverse(s.begin() + si + 1, s.begin() + i);
+                st.pop();
+            }
+            i++;
+        }
+        string res = "";
+        for (auto ele : s) {
+            if (ele != '(' && ele != ')') res += ele;  
+        }
+        return res;
     }
 };

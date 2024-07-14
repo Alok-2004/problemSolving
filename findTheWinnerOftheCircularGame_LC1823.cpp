@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-usiing namespace std;
+using namespace std;
 
 //TC of O(n * k) and SC of O(n)
 /*
@@ -25,7 +25,7 @@ public:
 };
 */
 //Josephus problem algorithm
-c
+
 
 int main(){
 	

@@ -2,10 +2,7 @@ class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
         if(head == nullptr) return nullptr;
-        unordered_set<int>us;
-        for(auto ele : nums){
-            us.insert(ele);
-        }
+        unordered_set<int>us(nums.begin(), nums.end());
 
         ListNode* dummy = new ListNode(INT_MIN);
         dummy->next = head;

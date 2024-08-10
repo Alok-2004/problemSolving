@@ -4,8 +4,18 @@ using namespace std;
 
 class Solution {
 public:
+	int sizeOfLinkedList(Node* head){
+        Node* temp = head;
+        int res = 0;
+        while(temp){
+            res++;
+            temp = temp->next;
+        }
+        return res;
+    }
+	
     vector<ListNode*> splitListToParts(ListNode* head, int k) {
-        // find the length
+        int k = sizeOfLinkedList(head);
 		ListNode *temp = head;
 		int n = 0;
 		while(temp){

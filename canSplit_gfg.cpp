@@ -4,6 +4,8 @@ Given an array of integers arr, return true if it is possible to split it in
 two subarrays (without reordering the elements), such that the sum of the two subarrays are equal. 
 If it is not possible then return false.
 */
+
+
 class Solution {
   public:
     bool canSplit(vector<int>& arr) {

@@ -50,3 +50,8 @@ class Solution {
         
     }
 };
+
+int main(){
+	
+	
+}

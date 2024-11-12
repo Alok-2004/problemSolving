@@ -17,14 +17,28 @@ Otherwise, return false and do not add the event to the calendar.
 #include<bits/stdc++.h>
 using namespace std;
 
-class MyCalendar {
+class MyCalendar{
 public:
-    MyCalendar() {
-        
+    vector<pair<int, int>> overallBookings;
+
+    MyCalendar(){}
+
+    bool checkOverlap(int start1, int end1, int start2, int end2) {
+        return max(start1, start2) < min(end1, end2);
     }
-    
+
     bool book(int start, int end) {
-        
+        for(pair<int, int> region : overallBookings) {
+            if(checkOverlap(region.first, region.second, start, end)) {
+                return false;
+            }
+        }
+
+        overallBookings.push_back({start, end});
+        return true;
     }
 };
 
+int main(){
+	
+}

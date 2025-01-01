@@ -13,36 +13,20 @@ class Solution
 public:
     vector<vector<string>> anagrams(vector<string> &arr)
     {
-        map<string, pair<vector<string>, int>> mp;
+        unordered_map<string, vector<string>> mp;
         vector<vector<string>> res;
-        int count = 0;
-        for (int i = 0; i < arr.size(); i++)
+
+        for (const auto &str : arr)
         {
-            string temp = arr[i];
+            string temp = str;
             sort(temp.begin(), temp.end());
-            if (!mp.count(temp))
-            {
-                vector<string> ele;
-                ele.emplace_back(arr[i]);
-                pair<vector<string>, int> curr = make_pair(ele, count);
-                mp[temp] = curr;
-                count++;
-            }
-            else
-            {
-                auto update = mp[temp];
-                update.first.emplace_back(arr[i]);
-                mp[temp] = update;
-            }
+            mp[temp].emplace_back(str);
         }
 
-        res.resize(mp.size(), {});
-        for (auto ele : mp)
+        for (auto &group : mp)
         {
-            int i = ele.second.second;
-            res[i] = ele.second.first;
+            res.emplace_back(move(group.second));
         }
-        sort(res.begin(), res.end());
 
         return res;
     }

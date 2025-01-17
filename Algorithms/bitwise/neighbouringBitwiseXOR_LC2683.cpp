@@ -16,6 +16,8 @@ A binary array is an array containing only 0's and 1's
 #include<bit/stdc++.h>
 using namespace std;
 
+
+// Approach 1
 class Solution {
 public:
     bool doesValidArrayExist(vector<int>& derived) {
@@ -25,6 +27,22 @@ public:
         }    
         
         return temp == 0;
+    }
+};
+
+// Approach 2
+class Solution {
+public:
+    bool check(int start , vector<int>& derived){
+        int temp = start;
+        for(int i = 0 ; i < derived.size() ; i++){
+            temp ^= derived[i];
+        }
+        return temp == start;
+    }
+
+    bool doesValidArrayExist(vector<int>& derived) {
+        return check(1 ,derived) || check(0 , derived);
     }
 };
 

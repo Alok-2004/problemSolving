@@ -51,6 +51,39 @@ public:
 };
 */
 
+// Now working on days wise and storing number of people on any given day
+/*
+class Solution {
+public:
+    int peopleAwareOfSecret(int n, int delay, int forget) {
+        const int MOD = 1e9 + 7;
+        vector<long long> count(forget + 1, 0);
+        count[1] = 1;
+        int days = 1;
+        
+        while(days < n) {
+            long long sharing = 0;
+            for(int i = forget - 1; i >= 1; i--) {
+                if(i >= delay && i < forget) {
+                    sharing = (sharing + count[i]) % MOD;
+                }
+                count[i + 1] = count[i];
+            }
+            
+            count[1] = sharing;
+            days++;
+        }
+        
+        long long result = 0;
+        for(int i = 1; i <= forget; i++) {
+            result = (result + count[i]) % MOD;
+        }
+        
+        return result;
+    }
+};
+*/
+
 int main(){
 	
 }

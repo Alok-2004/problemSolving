@@ -17,23 +17,23 @@ using namespace std;
 class Solution {
 public:
     bool horizontal(vector<vector<int>>& rec) {
-        sort(rec.begin(), rec.end());
+        sort(rec.begin(), rec.end() , [](vector<int>& a, vector<int>& b) {
+            return a[0] < b[0];
+        });
 
-        vector<vector<int>> temp;
         auto curr = rec[0];
+        int sec = 1;
 
         for (int i = 1; i < rec.size(); i++) {
             if (curr[2] > rec[i][0]) {
                 curr[2] = max(curr[2], rec[i][2]);
             } else {
-                temp.push_back(curr);
+                sec++;
                 curr = rec[i];
             }
         }
 
-        temp.push_back(curr);
-        cout<<temp.size()<<endl;
-        return temp.size() > 2;
+        return sec > 2;
     }
 
     bool vertical(vector<vector<int>>& rec) {
@@ -41,21 +41,19 @@ public:
             return a[1] < b[1];
         });
 
-        vector<vector<int>> temp;
         auto curr = rec[0];
+        int sec = 1;
 
         for (int i = 1; i < rec.size(); i++) {
             if (curr[3] > rec[i][1]) {
                 curr[3] = max(curr[3], rec[i][3]);
             } else {
-                temp.push_back(curr);
+                sec++;
                 curr = rec[i];
             }
         }
 
-        temp.push_back(curr);
-        cout<<temp.size()<<endl;
-        return temp.size() > 2; 
+        return sec > 2;
     }
 
     bool checkValidCuts(int n, vector<vector<int>>& rec) {
